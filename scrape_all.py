@@ -25,6 +25,7 @@ def discover_scrapers(token):
                         issubclass(klass, DeltaScraper)
                         and klass.__module__ != "kubra_scraper"
                         and klass.__module__ != "base_scraper"
+                        and klass.__module__ != "AEKU_scraper"
                     ):
                         scrapers.append(klass(token))
                 except TypeError:
@@ -33,7 +34,7 @@ def discover_scrapers(token):
 
 
 if __name__ == "__main__":
-    github_token = os.getenv("GITHUB_TOKEN")
+    github_token = os.getenv("GH_TOKEN")
     for scraper in discover_scrapers(github_token):
         if github_token is None:
             scraper.test_mode = True
