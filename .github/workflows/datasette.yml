@@ -31,6 +31,6 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       # Add command for each DB to publish
       run: |
-        python build_database.py lgeku/outages.db
+        python build_database.py aeku/outages.db
         heroku plugins:install heroku-builds
-        datasette publish heroku --name=lgeku-outages --install=datasette-cluster-map --install=datasette-vega lgeku/outages.db
+        datasette publish heroku --name=aeku-outages --install=datasette-cluster-map --install=datasette-vega aeku/outages.db
