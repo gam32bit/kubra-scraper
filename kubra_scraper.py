@@ -7,7 +7,7 @@ from base_scraper import DeltaScraper
 
 load_dotenv()
 
-MIN_ZOOM = 7
+MIN_ZOOM = 14
 # They don't appear to let us zoom in beyond 15.
 # They just group incidents that aren't resolvable at zoom level 14, which isn't great.
 MAX_ZOOM = 14
@@ -54,6 +54,7 @@ class KubraScraper(DeltaScraper):
         self.layer_name = [l for l in interval_data if l["type"].startswith("CLUSTER_LAYER")][0]["layerName"]
 
     def fetch_data(self):
+        print(self.data_url)
         data = self._make_request(self.data_url).json()
         expected_outages = data["summaryFileData"]["totals"][0]["total_outages"]
 
@@ -140,7 +141,7 @@ class KubraScraper(DeltaScraper):
             points += polyline.decode(geom)
 
         bbox = self._get_bounding_box(points)
-
+        print("stop here")
         return [mercantile.quadkey(t) for t in mercantile.tiles(*bbox, zooms=[MIN_ZOOM])]
 
     def _make_request(self, url):
