@@ -1,10 +1,10 @@
 from kubra_scraper import KubraScraper
 
 
-class AEKUScraper(KubraScraper):
-    owner = "gam32bit"
-    repo = "austinoutages"
-    filepath = "ATXoutages/outages.json"
+class LGEKUScraper(KubraScraper):
+    owner = "codeforkyana"
+    repo = "power-outage-data"
+    filepath = "lgeku/outages.json"
 
-    instance_id = "dd9c446f-f6b8-43f9-8f80-83f5245c60a1"
-    view_id = "76446308-a901-4fa3-849c-3dd569933a51"
+    instance_id = "877fd1e9-4162-473f-b782-d8a53a85326b"
+    view_id = "a6cee9e4-312b-4b77-9913-2ae371eb860d"
